@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fnb_customer/widgets/home_bottom_bar.dart';
+import 'package:fnb_customer/widgets/items_widgets.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -34,11 +36,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(top: 15),
+          padding: const EdgeInsets.only(top: 15),
           child: ListView(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -61,10 +63,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Text(
                   "it's a Great Day Fot Coffwe",
@@ -76,12 +78,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
                 width: MediaQuery.of(context).size.width,
                 height: 60,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 50, 54, 56),
+                    color: const Color.fromARGB(255, 50, 54, 56),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
                   decoration: InputDecoration(
@@ -100,46 +103,40 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               ),
               TabBar(
                 controller: _tabController,
-                labelColor: Color(0xFFE57734),
+                labelColor: const Color(0xFFE57734),
                 unselectedLabelColor: Colors.white.withOpacity(0.5),
                 isScrollable: true,
-                indicator: UnderlineTabIndicator(
+                indicator: const UnderlineTabIndicator(
                   borderSide: BorderSide(
                     width: 3,
                     color: Color(0xFFE57734),
                   ),
                   insets: EdgeInsets.symmetric(horizontal: 16),
                 ),
-                labelStyle: TextStyle(fontSize: 20),
-                labelPadding: EdgeInsets.symmetric(horizontal: 20),
-                tabs: [
+                labelStyle:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                labelPadding: const EdgeInsets.symmetric(horizontal: 20),
+                tabs: const [
                   Tab(text: "Hot Coffee"),
-                  Tab(text: "Hot Coffee"),
-                  Tab(text: "Hot Coffee"),
-                  Tab(text: "Hot Coffee"),
+                  Tab(text: "Cold Coffee"),
+                  Tab(text: "Cappucino"),
+                  Tab(text: "Americano"),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Center(
                 child: [
-                  Container(
-                    color: Colors.red,
-                  ),
-                  Container(
-                    color: Colors.red,
-                  ),
-                  Container(
-                    color: Colors.red,
-                  ),
-                  Container(
-                    color: Colors.red,
-                  ),
+                ItemsWidgets(),
+                ItemsWidgets(),
+                ItemsWidgets(),
+                ItemsWidgets(),
                 ][_tabController.index],
               ),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: HomeBottomBar(),
     );
   }
 }

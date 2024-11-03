@@ -9,8 +9,8 @@ class Start extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        padding: EdgeInsets.only(top: 100, bottom: 50),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.only(top: 100, bottom: 50),
+        decoration: const BoxDecoration(
             color: Colors.black,
             image: DecorationImage(
               image: AssetImage('assets/images/bg.png'),
@@ -29,7 +29,7 @@ class Start extends StatelessWidget {
             ),
             Column(
               children: [
-                Text(
+                const Text(
                   'Feeling Low? Take a Sip of Coffwe',
                   style: TextStyle(
                       color: Colors.white,
@@ -37,22 +37,22 @@ class Start extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       letterSpacing: 1),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 80,
                 ),
                 Material(
-                  color: Color(0xFFE57734),
+                  color: const Color(0xFFE57734),
                   borderRadius: BorderRadius.circular(10),
                   child: InkWell(
                       splashColor: Colors.black,
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Home()));
+                            MaterialPageRoute(builder: (context) => const Home()));
                       },
                       child: Container(
                         padding:
-                            EdgeInsets.symmetric(vertical: 15, horizontal: 35),
-                        child: Text(
+                            const EdgeInsets.symmetric(vertical: 15, horizontal: 35),
+                        child: const Text(
                           'Get Start',
                           style: TextStyle(
                             color: Colors.white,
