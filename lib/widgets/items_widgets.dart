@@ -90,7 +90,7 @@ class ItemsWidgets extends StatelessWidget {
                       Text(
                         "Rp. 25.000",
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                         ),

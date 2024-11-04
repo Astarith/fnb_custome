@@ -69,7 +69,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Text(
-                  "it's a Great Day Fot Coffwe",
+                  "it's a Great Day For Coffwe",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 30,
