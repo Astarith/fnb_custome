@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fnb_customer/single_item_screen.dart';
 
 class ItemsWidgets extends StatelessWidget {
-  List img = [
+  final List<String> img = [
     'Latte',
     'Espresso',
     'Black Coffee',
@@ -12,24 +12,33 @@ class ItemsWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return GridView.count(
       physics: NeverScrollableScrollPhysics(),
-      crossAxisCount: 2,
+      crossAxisCount: screenWidth > 600 ? 3 : 2,
       shrinkWrap: true,
-      childAspectRatio: (150 / 195),
+      childAspectRatio: (screenWidth / screenHeight) * 1.3,
       children: [
         for (int i = 0; i < img.length; i++)
           Container(
-            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 13),
+            padding: EdgeInsets.symmetric(
+              vertical: screenHeight * 0.01,
+              horizontal: screenWidth * 0.02,
+            ),
+            margin: EdgeInsets.symmetric(
+              vertical: screenHeight * 0.015,
+              horizontal: screenWidth * 0.03,
+            ),
             decoration: BoxDecoration(
-              borderRadius: BorderRadiusDirectional.circular(20),
+              borderRadius: BorderRadius.circular(screenWidth * 0.05),
               color: Color(0xFF212325),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.4),
-                  spreadRadius: 1,
-                  blurRadius: 8,
+                  spreadRadius: screenWidth * 0.005,
+                  blurRadius: screenWidth * 0.02,
                 ),
               ],
             ),
@@ -38,22 +47,24 @@ class ItemsWidgets extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SingleItemScreen(img[i])));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SingleItemScreen(img[i]),
+                      ),
+                    );
                   },
                   child: Container(
-                    margin: EdgeInsets.all(10),
+                    margin: EdgeInsets.all(screenWidth * 0.02),
                     child: Image.asset(
                       "assets/images/${img[i]}.png",
-                      width: 120,
-                      height: 120,
+                      width: screenWidth * 0.3,
+                      height: screenWidth * 0.3,
                       fit: BoxFit.contain,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(bottom: 8),
+                  padding: EdgeInsets.only(bottom: screenHeight * 0.01),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Column(
@@ -62,18 +73,18 @@ class ItemsWidgets extends StatelessWidget {
                         Text(
                           img[i],
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: screenWidth * 0.045,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
                         ),
                         SizedBox(
-                          height: 10,
+                          height: screenHeight * 0.01,
                         ),
                         Text(
                           "Best Coffee",
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: screenWidth * 0.04,
                             fontWeight: FontWeight.bold,
                             color: Colors.white60,
                           ),
@@ -83,27 +94,27 @@ class ItemsWidgets extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
+                  padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         "Rp. 25.000",
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: screenWidth * 0.04,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.all(5),
+                        padding: EdgeInsets.all(screenWidth * 0.015),
                         decoration: BoxDecoration(
                           color: Color(0xFFE57734),
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(screenWidth * 0.05),
                         ),
                         child: Icon(
                           CupertinoIcons.add,
-                          size: 20,
+                          size: screenWidth * 0.05,
                           color: Colors.white,
                         ),
                       ),
